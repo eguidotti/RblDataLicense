@@ -8,7 +8,7 @@
 #' @param user The account number assigned by Bloomberg
 #' @param pw The password assigned by Bloomberg 
 #' 
-#' @return TRUE on success. Error otherwise
+#' @return logical. Is the connection succesful?
 #' 
 #' @examples 
 #' # These are dummy credentials. Replace with the credentials received from Bloomberg 
@@ -16,7 +16,7 @@
 #' 
 #' @export
 #' 
-RblConnect <- function(user, pw) {
+RblConnect <- function(user, pw, verbose = TRUE) {
  
     # sftp
     host <- 'dlsftp.bloomberg.com'
@@ -27,9 +27,11 @@ RblConnect <- function(user, pw) {
     url <- paste0(protocol, '://', user, ':', pw, '@', host, ':', port)
     
     # test connection
-    if( class(try(getURL(url), silent = T)) == 'try-error' ) 
-      stop('Authentication failure: check your credentials and whitelist the IP address in use. Contact Bloomberg support for help.')
-    
+    if( class(try(getURL(url), silent = T)) == 'try-error' ){ 
+      if(verbose) cat('Authentication failure: check your credentials and whitelist the IP address in use. Contact Bloomberg support for help.')
+      return(FALSE)
+    }
+      
     # set credentials
     options(RblUrl = url, RblUser = user)
     return(TRUE)

@@ -17,6 +17,7 @@
 #' @param overrides named list of Bloomberg overrides. Ex list('END_DT' = '20100101')
 #' @param auto.assign logical. Should results be loaded to env? Ignored if \emph{from} is not provided 
 #' @param env where to create objects if auto.assign = TRUE
+#' @param split maximum number of identifiers to process at once. Split requests to avoid memory leaks
 #' @param pollFrequency the polling frequency to check if the response file is available at Bloomberg
 #' @param timeout the timeout in seconds
 #' @param verbose logical. Should R report extra information on progress?
@@ -24,21 +25,14 @@
 #' @return 
 #' A list with components
 #' \describe{
-#'  \item{request}{
-#'   \describe{
-#'    \item{RblRequest}{The request file}
-#'    \item{file.req}{The request filename uploaded to Bloomberg}
-#'    \item{file.out}{The response filename to download from Bloomberg}
-#'   }
+#'  \item{req}{
+#'   List of characters representing each of the request files uploaded to Bloomberg
 #'  }
-#'  \item{response}{
-#'   \describe{
-#'    \item{file}{Path to the downloaded response file}
-#'    \item{content}{Vector of characters. Lines of the response file}
-#'   }
+#'  \item{out}{
+#'   List of characters representing each of the response file downloaded from Bloomberg
 #'  }
 #'  \item{data}{
-#'   result of \code{\link{RblParse}}
+#'   Return of \code{\link{RblParse}}
 #'  }
 #' }
 #' 
@@ -57,6 +51,7 @@ RblQuery <- function(
   overrides = NULL,
   auto.assign = FALSE, 
   env = parent.frame(),
+  split = 100,
   pollFrequency = 60, 
   timeout = 3600, 
   verbose = TRUE) 
@@ -86,26 +81,44 @@ RblQuery <- function(
   
   # info 
   i <- list()
+  i$request <- list()
+  i$response <- list()
   
-  # build request file
-  RblRequest <- RblRequestBuilder(header = header, fields = fields, identifiers = identifiers, overrides = overrides)
+  # split identifiers
+  identifiers <- split(x = identifiers, seq(1, length(identifiers), by = split))
   
-  # upload request file
-  request <- RblUpload(RblRequest = RblRequest, verbose = verbose)
-  # store info
-  i$request <- list(RblRequest = RblRequest, file.req = request$req, file.out = request$out)
+  # upload request files
+  for(n in 1:length(identifiers)){
   
-  # download response file
-  file <- RblDownload(file = request$out, pollFrequency = pollFrequency, timeout = timeout, verbose = verbose)
-  # store info
-  i$response <- list(file = file)
-  if(!is.null(file)) i$response$content <- readLines(file)
+    # build request file
+    RblRequest <- RblRequestBuilder(header = header, fields = fields, identifiers = identifiers[[n]], overrides = overrides)
+    
+    # upload request file
+    request <- RblUpload(RblRequest = RblRequest, verbose = verbose)
+    # store info
+    i$req[[request$req]] <- unlist(strsplit(RblRequest, '\n'))
+    i$out[[request$out]] <- ''
+    
+  }
   
-  # parse file and make data available in R
-  data <- RblParse(file = file, auto.assign = auto.assign, env = env, verbose = verbose)
-  # store info
-  i$data <- data
-  
+  # download response files
+  for(file.out in names(i$out)){
+    
+    # download response files
+    file <- RblDownload(file = file.out, pollFrequency = pollFrequency, timeout = timeout, verbose = verbose)
+    # store info
+    if(!is.null(file)) i$out[[file.out]] <- readLines(file)
+    
+    # parse file and make data available in R
+    data <- RblParse(file = file, auto.assign = auto.assign, env = env, verbose = verbose)
+    # store info
+    if(is.null(i$data)) i$data <- data    
+    else if (class(data)=='data.frame') i$data <- rbind(i$data, data)
+    else if (class(data)=='list') for(id in names(data)) i$data[[id]] <- data[[id]]
+    else if (class(data)=='character') i$data <- c(i$data, data)
+    
+  }
+
   # return
   return(i)
 }

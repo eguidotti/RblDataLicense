@@ -6,7 +6,7 @@
 \usage{
 RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
   overrides = NULL, auto.assign = FALSE, env = parent.frame(),
-  pollFrequency = 60, timeout = 3600, verbose = TRUE)
+  split = 100, pollFrequency = 60, timeout = 3600, verbose = TRUE)
 }
 \arguments{
 \item{identifiers}{vector of Bloomberg identifiers. Ex c('SXXE Index', 'SX5E Index')}
@@ -23,6 +23,8 @@ RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
 
 \item{env}{where to create objects if auto.assign = TRUE}
 
+\item{split}{maximum number of identifiers to process at once. Split requests to avoid memory leaks}
+
 \item{pollFrequency}{the polling frequency to check if the response file is available at Bloomberg}
 
 \item{timeout}{the timeout in seconds}
@@ -32,21 +34,14 @@ RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
 \value{
 A list with components
 \describe{
- \item{request}{
-  \describe{
-   \item{RblRequest}{The request file}
-   \item{file.req}{The request filename uploaded to Bloomberg}
-   \item{file.out}{The response filename to download from Bloomberg}
-  }
+ \item{req}{
+  List of characters representing each of the request files uploaded to Bloomberg
  }
- \item{response}{
-  \describe{
-   \item{file}{Path to the downloaded response file}
-   \item{content}{Vector of characters. Lines of the response file}
-  }
+ \item{out}{
+  List of characters representing each of the response file downloaded from Bloomberg
  }
  \item{data}{
-  result of \code{\link{RblParse}}
+  Return of \code{\link{RblParse}}
  }
 }
 }

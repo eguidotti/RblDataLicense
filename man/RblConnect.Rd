@@ -4,7 +4,7 @@
 \alias{RblConnect}
 \title{Create an SFTP connection to Bloomberg Datalicense}
 \usage{
-RblConnect(user, pw)
+RblConnect(user, pw, verbose = TRUE)
 }
 \arguments{
 \item{user}{The account number assigned by Bloomberg}
@@ -12,7 +12,7 @@ RblConnect(user, pw)
 \item{pw}{The password assigned by Bloomberg}
 }
 \value{
-TRUE on success. Error otherwise
+logical. Is the connection succesful?
 }
 \description{
 An sftp connection to Bloomberg Datalicense is established. On some Linux systems, this may
