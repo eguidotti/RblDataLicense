@@ -252,7 +252,7 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
   time <- 0
   while (time <= timeout) {
     
-    if (verbose) cat("Checking if file is available...\r\n")
+    if (verbose) cat(paste0("Checking if file ", file, " is available...\r\n"))
     
     if( class(try(curl_download(paste(url, file, sep='/'), destfile = tmp), silent = T)) == 'try-error' ) {
       

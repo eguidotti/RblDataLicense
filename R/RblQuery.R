@@ -81,11 +81,11 @@ RblQuery <- function(
   
   # info 
   i <- list()
-  i$request <- list()
-  i$response <- list()
+  i$req <- list()
+  i$out <- list()
   
   # split identifiers
-  identifiers <- split(x = identifiers, seq(1, length(identifiers), by = split))
+  identifiers <- suppressWarnings(split(x = identifiers, seq(1, length(identifiers), by = split)))
   
   # upload request files
   for(n in 1:length(identifiers)){
@@ -107,7 +107,7 @@ RblQuery <- function(
     # download response files
     file <- RblDownload(file = file.out, pollFrequency = pollFrequency, timeout = timeout, verbose = verbose)
     # store info
-    if(!is.null(file)) i$out[[file.out]] <- readLines(file)
+    if(!is.null(file)) i$out[[file.out]] <- paste0('Read this file: ', file)
     
     # parse file and make data available in R
     data <- RblParse(file = file, auto.assign = auto.assign, env = env, verbose = verbose)
