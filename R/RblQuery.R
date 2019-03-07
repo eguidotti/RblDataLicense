@@ -58,8 +58,10 @@ RblQuery <- function(
 {
   
   # checks
-  if(to!=Sys.Date()) warning('Tha parameter "to" is ignored if "from" is not provided')
-  if(auto.assign) warning('Tha parameter "auto.assign" is ignored if "from" is not provided')
+  if(is.null(from)){
+    if(to!=Sys.Date()) warning('Tha parameter "to" is ignored if "from" is not provided')
+    if(auto.assign) warning('Tha parameter "auto.assign" is ignored if "from" is not provided')
+  }
   
   # header
   header <- list()
