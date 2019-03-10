@@ -24,9 +24,12 @@ The request file can be user-defined following the Bloomberg Data License docume
 The response file needs to be downloaded (see \code{\link{RblDownload}}) and parsed (see \code{\link{RblParse}}) to make data available in R.
 }
 \examples{
+\dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+                                fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 req <- RblUpload(RblRequest)
 req
+}
 
 }

@@ -10,6 +10,8 @@ RblConnect(user, pw, verbose = TRUE)
 \item{user}{The account number assigned by Bloomberg}
 
 \item{pw}{The password assigned by Bloomberg}
+
+\item{verbose}{logical. Should R report extra information on progress?}
 }
 \value{
 logical. Is the connection succesful?
@@ -21,7 +23,9 @@ compile curl with SFTP support.
 See here for details: http://askubuntu.com/questions/195545/how-to-enable-sftp-support-in-curl
 }
 \examples{
+\dontrun{
 # These are dummy credentials. Replace with the credentials received from Bloomberg 
 RblConnect(user = 'dl000000', pw = '0000000000000000') 
+}
 
 }

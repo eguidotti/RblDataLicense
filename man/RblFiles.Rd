@@ -13,7 +13,9 @@ Vector of character strings representing the filenames available at Bloomberg
 Retrieve files available at Bloomberg.
 }
 \examples{
+\dontrun{
 # Run RblConnect first
 RblFiles()
+}
 
 }

@@ -26,11 +26,14 @@ RblParse(file, auto.assign = FALSE, env = parent.frame(),
 Parse Bloomberg response file. The PROGRAMNAME in use is auto detected: 'getdata' and 'gethistory' are supported.
 }
 \examples{
+\dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+                                fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 req <- RblUpload(RblRequest)
 out <- RblDownload(req$out)
 data <- RblParse(d)
 data
+}
 
 }

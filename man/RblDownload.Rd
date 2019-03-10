@@ -24,10 +24,13 @@ Use \code{\link{RblFiles}} to list the files available at Bloomberg.
 If the file is not available yet (i.e. a request file has just been uploaded), the function waits until the response file is there or the timeout is reached
 }
 \examples{
+\dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+                                fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 req <- RblUpload(RblRequest)
 out <- RblDownload(req$out)
 out
+}
 
 }

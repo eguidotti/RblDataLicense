@@ -58,8 +58,12 @@ The following routine to query Bloomberg is implemented:
 }
 }
 \examples{
+\dontrun{
 # Run RblConnect first
-x <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'), identifiers = c('SXXE Index', "SX5E Index"), from = '2005-01-01')
+x <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'), 
+              identifiers = c('SXXE Index', "SX5E Index"), 
+              from = '2005-01-01')
 str(x)
+}
 
 }

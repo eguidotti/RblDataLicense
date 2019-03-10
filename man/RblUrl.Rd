@@ -13,7 +13,9 @@ Url string
 Retrieve the Bloomberg connection Url.
 }
 \examples{
+\dontrun{
 # Run RblConnect first
 RblUrl()
+}
 
 }

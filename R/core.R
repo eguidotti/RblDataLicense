@@ -7,12 +7,17 @@
 #' 
 #' @param user The account number assigned by Bloomberg
 #' @param pw The password assigned by Bloomberg 
+#' @param verbose logical. Should R report extra information on progress?
 #' 
 #' @return logical. Is the connection succesful?
 #' 
 #' @examples 
+#' \dontrun{
 #' # These are dummy credentials. Replace with the credentials received from Bloomberg 
 #' RblConnect(user = 'dl000000', pw = '0000000000000000') 
+#' }
+#' 
+#' @import RCurl
 #' 
 #' @export
 #' 
@@ -46,8 +51,10 @@ RblConnect <- function(user, pw, verbose = TRUE) {
 #' @return Url string
 #' 
 #' @examples 
+#' \dontrun{
 #' # Run RblConnect first
 #' RblUrl()
+#' }
 #' 
 #' @export
 RblUrl <- function(){
@@ -67,8 +74,10 @@ RblUrl <- function(){
 #' @return User string
 #' 
 #' @examples 
+#' \dontrun{
 #' # Run RblConnect first
 #' RblUser()
+#' }
 #' 
 #' @export
 RblUser <- function(){
@@ -88,8 +97,12 @@ RblUser <- function(){
 #' @return Vector of character strings representing the filenames available at Bloomberg
 #' 
 #' @examples 
+#' \dontrun{
 #' # Run RblConnect first
 #' RblFiles()
+#' }
+#' 
+#' @import RCurl
 #' 
 #' @export
 RblFiles <- function(){
@@ -118,9 +131,12 @@ RblFiles <- function(){
 #' @return character string representing the request file. Upload it to query Bloomberg (see \code{\link{RblUpload}})
 #'  
 #' @examples
+#' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' RblRequest
+#' }
 #' 
 #' @export
 #' 
@@ -185,10 +201,15 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 #' }
 #' 
 #' @examples 
+#' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' req <- RblUpload(RblRequest)
 #' req
+#' }
+#' 
+#' @import RCurl
 #' 
 #' @export
 #' 
@@ -229,11 +250,16 @@ RblUpload <- function(RblRequest, verbose = TRUE) {
 #' @return character string. Path to the downloaded file. NULL on failure 
 #' 
 #' @examples 
+#' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' req <- RblUpload(RblRequest)
 #' out <- RblDownload(req$out)
 #' out
+#' }
+#' 
+#' @import curl
 #' 
 #' @export
 #' 
@@ -300,12 +326,17 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
 #' }
 #' 
 #' @examples 
+#' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' req <- RblUpload(RblRequest)
 #' out <- RblDownload(req$out)
 #' data <- RblParse(d)
 #' data
+#' }
+#' 
+#' @import xts
 #' 
 #' @export
 #' 

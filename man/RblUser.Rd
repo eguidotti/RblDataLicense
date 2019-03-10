@@ -13,7 +13,9 @@ User string
 Retrieve the Bloomberg User.
 }
 \examples{
+\dontrun{
 # Run RblConnect first
 RblUser()
+}
 
 }

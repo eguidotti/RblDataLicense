@@ -22,8 +22,11 @@ character string representing the request file. Upload it to query Bloomberg (se
 The request file is generated according to Bloomberg Data License documentation
 }
 \examples{
+\dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+                                fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 RblRequest
+}
 
 }
