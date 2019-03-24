@@ -1,7 +1,7 @@
 Package: RblDataLicense
 Type: Package
-Title: Connect R to 'Bloomberg Data License'
-Version: 0.1.2
+Title: R Interface to 'Bloomberg Data License'
+Version: 0.1.3
 Date: 2019-03-01
 Author: Emanuele Guidotti
 Maintainer: Emanuele Guidotti <emanuele.guidotti@hotmail.it>

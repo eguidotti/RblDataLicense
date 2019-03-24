@@ -32,7 +32,7 @@ RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME 
                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 req <- RblUpload(RblRequest)
 out <- RblDownload(req$out)
-data <- RblParse(d)
+data <- RblParse(out)
 data
 }
 
