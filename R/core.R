@@ -374,7 +374,7 @@ RblParse <- function(file, auto.assign = FALSE, env = parent.frame(), verbose = 
         data <- unlist(strsplit(x = xx[(s+1):(e-1)], split = '|', fixed = T))
         data <- data[-which(data==ticker)]
         n <- length(data)
-        id <- gsub(" ",".", ticker,fixed=TRUE) 
+        id <- ticker 
         data <- xts(x = as.numeric(data[seq(2, n, by = 2)]), order.by = as.Date(data[seq(1, n, by = 2)], '%m/%d/%Y'))
         colnames(data) <- field
         if(is.null(db[[id]])) db[[id]] <- data
@@ -386,7 +386,7 @@ RblParse <- function(file, auto.assign = FALSE, env = parent.frame(), verbose = 
     if(auto.assign){
       ids <- names(db)
       for(id in ids)
-        assign(x = id, value = db[[id]], envir = env)
+        assign(x = make.names(id), value = db[[id]], envir = env)
       return(ids)
     }
     
