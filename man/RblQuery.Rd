@@ -6,7 +6,8 @@
 \usage{
 RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
   overrides = NULL, auto.assign = FALSE, env = parent.frame(),
-  split = 100, pollFrequency = 60, timeout = 3600, verbose = TRUE)
+  category = c(), limit = 5, split = 100, pollFrequency = 60,
+  timeout = 3600, verbose = TRUE)
 }
 \arguments{
 \item{identifiers}{vector of Bloomberg identifiers. Ex c('SXXE Index', 'SX5E Index')}
@@ -22,6 +23,10 @@ RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
 \item{auto.assign}{logical. Should results be loaded to env? Ignored if \emph{from} is not provided}
 
 \item{env}{where to create objects if auto.assign = TRUE}
+
+\item{category}{Data License categories to enable (e.g. 'SECMASTER', 'PRICING', 'FUNDAMENTALS', ...). WARNING! Each DL category is billed separately, so check your DL license carefully!}
+
+\item{limit}{prevent requesting data for more than this amout of identifiers. This is done to help you keep your budget in cntrol. Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing the limit.}
 
 \item{split}{maximum number of identifiers to process at once. Split requests to avoid memory leaks}
 

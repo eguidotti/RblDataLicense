@@ -17,6 +17,8 @@
 #' @param overrides named list of Bloomberg overrides. Ex list('END_DT' = '20100101')
 #' @param auto.assign logical. Should results be loaded to env? Ignored if \emph{from} is not provided 
 #' @param env where to create objects if auto.assign = TRUE
+#' @param category Data License categories to enable (e.g. 'SECMASTER', 'PRICING', 'FUNDAMENTALS', ...). WARNING! Each DL category is billed separately, so check your DL license carefully!
+#' @param limit prevent requesting data for more than this amout of identifiers. This is done to help you keep your budget in cntrol. Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing the limit. 
 #' @param split maximum number of identifiers to process at once. Split requests to avoid memory leaks
 #' @param pollFrequency the polling frequency to check if the response file is available at Bloomberg
 #' @param timeout the timeout in seconds
@@ -55,6 +57,8 @@ RblQuery <- function(
   overrides = NULL,
   auto.assign = FALSE, 
   env = parent.frame(),
+  category = c(),
+  limit = 5,
   split = 100,
   pollFrequency = 60, 
   timeout = 3600, 
@@ -62,6 +66,7 @@ RblQuery <- function(
 {
   
   # checks
+  if(length(identifiers)>limit) stop(paste('\n Preventing Data License from requesting', length(identifiers), 'instruments. Increase the "limit" parameter to confirm and run the query. \n\n WARNING! \n Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing the limit.'))
   if(is.null(from)){
     if(to!=Sys.Date()) warning('Tha parameter "to" is ignored if "from" is not provided')
     if(auto.assign) warning('Tha parameter "auto.assign" is ignored if "from" is not provided')
@@ -72,12 +77,8 @@ RblQuery <- function(
   header$FIRMNAME <- RblUser()
   header$PROGRAMNAME <- ifelse(is.null(from), 'getdata', 'gethistory')
   
-  # header for getdata
-  if(header$PROGRAMNAME=='getdata') {
-    header$PRICING = 'yes' 
-    header$SECMASTER = 'yes'
-    header$FUNDAMENTALS = 'yes'
-  }
+  # Enable DL categories
+  for(i in category) header[[i]] <- 'yes'
   
   # header for gethistory
   if(header$PROGRAMNAME=='gethistory'){
