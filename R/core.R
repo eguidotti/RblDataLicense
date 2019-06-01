@@ -285,7 +285,7 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
     
     if (verbose) cat(paste0("Checking if file ", file, " is available...\r\n"))
     
-    if( class(try(download.file(paste(url, file, sep='/'), destfile = tmp, quiet = !verbose), silent = T)) == 'try-error' ) {
+    if( class(try(suppressWarnings(download.file(paste(url, file, sep='/'), destfile = tmp, quiet = !verbose), silent = T))) == 'try-error' ) {
       
       time <- time + pollFrequency
       if(time > timeout) break
