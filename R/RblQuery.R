@@ -63,7 +63,7 @@ RblQuery <- function(
   split = 100,
   pollFrequency = 60, 
   timeout = 3600, 
-  filename = NULL,
+  filename = format(Sys.time(), "%m%d%H%M%S"),
   verbose = TRUE) 
 {
   
@@ -93,10 +93,6 @@ RblQuery <- function(
   i$req <- list()
   i$out <- list()
   
-  # check filename
-  if(is.null(filename))
-    filename <- paste(paste0(sample(letters, 3), collapse = ''), Sys.time())
-
   # split identifiers
   identifiers <- suppressWarnings(split(x = identifiers, seq(1, length(identifiers), by = split)))
   

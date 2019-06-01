@@ -4,7 +4,8 @@
 \alias{RblUpload}
 \title{Upload a request file to Bloomberg}
 \usage{
-RblUpload(RblRequest, filename = NULL, verbose = TRUE)
+RblUpload(RblRequest, filename = format(Sys.time(), "\%m\%d\%H\%M\%S"),
+  verbose = TRUE)
 }
 \arguments{
 \item{RblRequest}{character string representing the request file according to Bloomberg Datalicense documentation. Can be generated with the \code{\link{RblRequestBuilder}} function}

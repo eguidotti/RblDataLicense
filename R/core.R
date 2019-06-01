@@ -214,10 +214,9 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 #' 
 #' @export
 #' 
-RblUpload <- function(RblRequest, filename = NULL, verbose = TRUE) {
+RblUpload <- function(RblRequest, filename = format(Sys.time(), "%m%d%H%M%S"), verbose = TRUE) {
   
   # request file
-  if(is.null(filename)) filename <- paste(paste0(sample(letters, 3), collapse = ''), Sys.time())
   filename <- paste0("Rbl_", gsub("[^[:alnum:]_]","", filename))
   requestFileName <- paste0(filename, ".req")
   

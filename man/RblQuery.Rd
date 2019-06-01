@@ -7,7 +7,8 @@
 RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
   overrides = NULL, auto.assign = FALSE, env = parent.frame(),
   category = c(), limit = 5, split = 100, pollFrequency = 60,
-  timeout = 3600, filename = NULL, verbose = TRUE)
+  timeout = 3600, filename = format(Sys.time(), "\%m\%d\%H\%M\%S"),
+  verbose = TRUE)
 }
 \arguments{
 \item{identifiers}{vector of Bloomberg identifiers. Ex c('SXXE Index', 'SX5E Index')}
