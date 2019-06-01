@@ -1,22 +1,26 @@
 Package: RblDataLicense
 Type: Package
 Title: R Interface to 'Bloomberg Data License'
-Version: 0.1.4
+Version: 0.1.5
 Date: 2019-03-01
-Author: Emanuele Guidotti
-Maintainer: Emanuele Guidotti <emanuele.guidotti@hotmail.it>
-Description: Download prices, market data, and master data with 
-    the 'Bloomberg Data License' service from 
+Authors@R: person(given = "Emanuele", 
+				  family = "Guidotti", 
+				  email = "emanuele.guidotti@hotmail.it", 
+				  role = c("aut", "cre"), 
+				  comment = c(ORCID = "0000-0002-8961-6623"))
+Description: R interface to access prices and market data with the 
+    'Bloomberg Data License' service from 
     <https://www.bloomberg.com/professional/product/data-license/>. 
-    As a prerequisite, you need a valid license from 'Bloomberg'. 
+    As a prerequisite, a valid Data License from 'Bloomberg' is needed 
+    together with the corresponding SFTP credentials and whitelisting 
+    of the IP from which accessing the service. 
     This software and its author are in no way affiliated, 
     endorsed, or approved by 'Bloomberg' or any of its affiliates.
     'Bloomberg' is a registered trademark.
 License: GPL-3
-URL: https://github.com/emanuele-guidotti/RblDataLicense
-BugReports: https://github.com/emanuele-guidotti/RblDataLicense/issues
+URL: https://emanueleguidotti.dev/RblDataLicense/
+BugReports: https://github.com/emanuele-guidotti/RblDataLicense/issues/
 Depends:
-    curl,
     RCurl,
     xts,
     R (>= 3.0)

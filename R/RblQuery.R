@@ -22,6 +22,7 @@
 #' @param split maximum number of identifiers to process at once. Split requests to avoid memory leaks
 #' @param pollFrequency the polling frequency to check if the response file is available at Bloomberg
 #' @param timeout the timeout in seconds
+#' @param filename name assigned to the remote file. Only alphanumeric characters are allowed. Invalid characters are removed. 
 #' @param verbose logical. Should R report extra information on progress?
 #' 
 #' @return 
@@ -62,6 +63,7 @@ RblQuery <- function(
   split = 100,
   pollFrequency = 60, 
   timeout = 3600, 
+  filename = NULL,
   verbose = TRUE) 
 {
   
@@ -91,6 +93,10 @@ RblQuery <- function(
   i$req <- list()
   i$out <- list()
   
+  # check filename
+  if(is.null(filename))
+    filename <- paste(paste0(sample(letters, 3), collapse = ''), Sys.time())
+
   # split identifiers
   identifiers <- suppressWarnings(split(x = identifiers, seq(1, length(identifiers), by = split)))
   
@@ -101,7 +107,8 @@ RblQuery <- function(
     RblRequest <- RblRequestBuilder(header = header, fields = fields, identifiers = identifiers[[n]], overrides = overrides)
     
     # upload request file
-    request <- RblUpload(RblRequest = RblRequest, verbose = verbose)
+    request <- RblUpload(RblRequest = RblRequest, filename = paste(filename, n, sep = '_'), verbose = verbose)
+    
     # store info
     i$req[[request$req]] <- unlist(strsplit(RblRequest, '\n'))
     i$out[[request$out]] <- ''

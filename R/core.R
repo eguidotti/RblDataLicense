@@ -192,6 +192,7 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 #' The response file needs to be downloaded (see \code{\link{RblDownload}}) and parsed (see \code{\link{RblParse}}) to make data available in R.
 #' 
 #' @param RblRequest character string representing the request file according to Bloomberg Datalicense documentation. Can be generated with the \code{\link{RblRequestBuilder}} function
+#' @param filename name assigned to the remote file. Only alphanumeric characters and underscores are allowed. Invalid characters are removed.
 #' @param verbose logical. Should R report extra information on progress?
 #' 
 #' @return A list with components
@@ -213,10 +214,16 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 #' 
 #' @export
 #' 
-RblUpload <- function(RblRequest, verbose = TRUE) {
+RblUpload <- function(RblRequest, filename = NULL, verbose = TRUE) {
   
   # request file
-  requestFileName <- substring(tempfile(pattern = "Rbl", tmpdir = "", fileext = ".req"), 2)
+  if(is.null(filename)) filename <- paste(paste0(sample(letters, 3), collapse = ''), Sys.time())
+  filename <- paste0("Rbl_", gsub("[^[:alnum:]_]","", filename))
+  requestFileName <- paste0(filename, ".req")
+  
+  # stop if the request is already there
+  if(any(grepl(RblFiles(), pattern = sprintf('^%s\\..*', filename))))
+    stop(sprintf("%s is already there. Can't overwrite existing file.", filename))
   
   # uploading
   if (verbose) cat(paste0("Uploading file ", requestFileName, "\r\n" ))
@@ -225,7 +232,7 @@ RblUpload <- function(RblRequest, verbose = TRUE) {
   if (verbose) cat(paste0("Successfully uploaded file ", requestFileName, "\r\n" ))
   
   # response file
-  responseFileName <- gsub(pattern = '.req', replacement = '.out', x = requestFileName)
+  responseFileName <- paste0(filename, ".out")
   if(grepl(x = RblRequest, pattern = 'PROGRAMNAME=gethistory', fixed = TRUE))
     responseFileName <- paste0(responseFileName, '.gz')
   
@@ -259,8 +266,6 @@ RblUpload <- function(RblRequest, verbose = TRUE) {
 #' out
 #' }
 #' 
-#' @import curl
-#' 
 #' @export
 #' 
 RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE) {
@@ -280,7 +285,7 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
     
     if (verbose) cat(paste0("Checking if file ", file, " is available...\r\n"))
     
-    if( class(try(curl_download(paste(url, file, sep='/'), destfile = tmp), silent = T)) == 'try-error' ) {
+    if( class(try(download.file(paste(url, file, sep='/'), destfile = tmp), silent = T)) == 'try-error' ) {
       
       time <- time + pollFrequency
       if(time > timeout) break

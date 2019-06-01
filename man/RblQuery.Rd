@@ -7,7 +7,7 @@
 RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
   overrides = NULL, auto.assign = FALSE, env = parent.frame(),
   category = c(), limit = 5, split = 100, pollFrequency = 60,
-  timeout = 3600, verbose = TRUE)
+  timeout = 3600, filename = NULL, verbose = TRUE)
 }
 \arguments{
 \item{identifiers}{vector of Bloomberg identifiers. Ex c('SXXE Index', 'SX5E Index')}
@@ -33,6 +33,8 @@ RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
 \item{pollFrequency}{the polling frequency to check if the response file is available at Bloomberg}
 
 \item{timeout}{the timeout in seconds}
+
+\item{filename}{name assigned to the remote file. Only alphanumeric characters are allowed. Invalid characters are removed.}
 
 \item{verbose}{logical. Should R report extra information on progress?}
 }

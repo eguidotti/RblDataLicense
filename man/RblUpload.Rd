@@ -4,10 +4,12 @@
 \alias{RblUpload}
 \title{Upload a request file to Bloomberg}
 \usage{
-RblUpload(RblRequest, verbose = TRUE)
+RblUpload(RblRequest, filename = NULL, verbose = TRUE)
 }
 \arguments{
 \item{RblRequest}{character string representing the request file according to Bloomberg Datalicense documentation. Can be generated with the \code{\link{RblRequestBuilder}} function}
+
+\item{filename}{name assigned to the remote file. Only alphanumeric characters and underscores are allowed. Invalid characters are removed.}
 
 \item{verbose}{logical. Should R report extra information on progress?}
 }
