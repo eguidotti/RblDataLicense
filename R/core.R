@@ -192,7 +192,7 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 #' The response file needs to be downloaded (see \code{\link{RblDownload}}) and parsed (see \code{\link{RblParse}}) to make data available in R.
 #' 
 #' @param RblRequest character string representing the request file according to Bloomberg Datalicense documentation. Can be generated with the \code{\link{RblRequestBuilder}} function
-#' @param filename name assigned to the remote file. Only alphanumeric characters and underscores are allowed. Invalid characters are removed.
+#' @param filename name assigned to the remote file. Only alphanumeric characters and underscores are allowed. Invalid characters are removed. 
 #' @param verbose logical. Should R report extra information on progress?
 #' 
 #' @return A list with components
@@ -217,6 +217,7 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 RblUpload <- function(RblRequest, filename = format(Sys.time(), "%m%d%H%M%S"), verbose = TRUE) {
   
   # request file
+  if(nchar(filename)>14) stop("filename cannot exceed 14 characters")
   filename <- paste0("Rbl_", gsub("[^[:alnum:]_]","", filename))
   requestFileName <- paste0(filename, ".req")
   

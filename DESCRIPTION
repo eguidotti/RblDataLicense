@@ -1,7 +1,7 @@
 Package: RblDataLicense
 Type: Package
 Title: R Interface to 'Bloomberg Data License'
-Version: 0.1.5
+Version: 0.1.6
 Date: 2019-03-01
 Authors@R: person(given = "Emanuele", 
 				  family = "Guidotti", 

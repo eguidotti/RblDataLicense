@@ -96,6 +96,11 @@ RblQuery <- function(
   # split identifiers
   identifiers <- suppressWarnings(split(x = identifiers, seq(1, length(identifiers), by = split)))
   
+  # check filename
+  maxchar <- 13 - nchar(length(identifiers))
+  if(nchar(filename) > maxchar) 
+    stop(sprintf("filename cannot exceed %s characters", maxchar))
+  
   # upload request files
   for(n in 1:length(identifiers)){
   
