@@ -265,7 +265,7 @@ RblUpload <- function(RblRequest, filename = format(Sys.time(), "%m%d%H%M%S"), v
 #' If the file is not available yet (i.e. a request file has just been uploaded), the function waits until the response file is there or the timeout is reached
 #' 
 #' @param file character string representing the file to download
-#' @param pollFrequency the polling frequency to check if file is available at Bloomberg
+#' @param frequency the polling frequency to check if file is available at Bloomberg
 #' @param timeout the timeout in seconds
 #' @param verbose logical. Should R report extra information on progress?
 #' 
@@ -293,10 +293,10 @@ RblUpload <- function(RblRequest, filename = format(Sys.time(), "%m%d%H%M%S"), v
 #' 
 #' @export
 #' 
-RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE) {
+RblDownload <- function(file, frequency = 60, timeout = 3600, verbose = TRUE) {
   
   # check args
-  if(pollFrequency <= 0) stop("pollFrequency must be > 0")
+  if(frequency <= 0) stop("frequency must be > 0")
   if(timeout < 0) stop("timeout must be >= 0")
   
   # temp file to write 
@@ -312,11 +312,11 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
     
     if( class(try(suppressWarnings(utils::download.file(paste(url, file, sep='/'), destfile = tmp, quiet = !verbose)), silent = T)) == 'try-error' ) {
       
-      time <- time + pollFrequency
+      time <- time + frequency
       if(time > timeout) break
         
       if (verbose) cat('File not yet available, waiting...\r\n')
-      for (x in 1:as.integer(pollFrequency / 2)) {
+      for (x in 1:as.integer(frequency / 2)) {
         if (verbose) cat('.')
         Sys.sleep(2)
       }

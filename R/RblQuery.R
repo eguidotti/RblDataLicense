@@ -21,7 +21,7 @@
 #' @param category vector of Data License categories to enable. E.g. c('SECMASTER', 'PRICING', 'FUNDAMENTALS'). WARNING! Each DL category is billed separately, so check your DL license carefully!
 #' @param limit prevent requesting data for more than this amout of identifiers. This is done to help you keeping your budget under control. Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing this limit. 
 #' @param split maximum number of identifiers to process at once. Requests are split to avoid memory leaks.
-#' @param pollFrequency the polling frequency to check if the response file is available at Bloomberg
+#' @param frequency the polling frequency to check if the response file is available at Bloomberg
 #' @param timeout the timeout in seconds
 #' @param filename name assigned to the remote file. Only alphanumeric characters are allowed. Invalid characters are removed. 
 #' @param verbose logical. Should R report extra information on progress?
@@ -63,7 +63,7 @@ RblQuery <- function(
   overrides = c(),
   limit = 5,
   split = 100,
-  pollFrequency = 60, 
+  frequency = 60, 
   timeout = 3600, 
   filename = format(Sys.time(), "%m%d%H%M%S"),
   verbose = TRUE) 
@@ -125,7 +125,7 @@ RblQuery <- function(
   for(file.out in names(i$out)){
     
     # download response files
-    file <- RblDownload(file = file.out, pollFrequency = pollFrequency, timeout = timeout, verbose = verbose)
+    file <- RblDownload(file = file.out, frequency = frequency, timeout = timeout, verbose = verbose)
     # store info
     if(!is.null(file)) i$out[[file.out]] <- paste0('Read this file: ', file)
     

@@ -4,12 +4,12 @@
 \alias{RblDownload}
 \title{Download a file from Bloomberg}
 \usage{
-RblDownload(file, pollFrequency = 60, timeout = 3600, verbose = TRUE)
+RblDownload(file, frequency = 60, timeout = 3600, verbose = TRUE)
 }
 \arguments{
 \item{file}{character string representing the file to download}
 
-\item{pollFrequency}{the polling frequency to check if file is available at Bloomberg}
+\item{frequency}{the polling frequency to check if file is available at Bloomberg}
 
 \item{timeout}{the timeout in seconds}
 

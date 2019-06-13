@@ -7,7 +7,7 @@
 RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
   auto.assign = FALSE, env = parent.frame(), category = c(),
   add_headers = c(), overrides = c(), limit = 5, split = 100,
-  pollFrequency = 60, timeout = 3600, filename = format(Sys.time(),
+  frequency = 60, timeout = 3600, filename = format(Sys.time(),
   "\%m\%d\%H\%M\%S"), verbose = TRUE)
 }
 \arguments{
@@ -33,7 +33,7 @@ RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
 
 \item{split}{maximum number of identifiers to process at once. Requests are split to avoid memory leaks.}
 
-\item{pollFrequency}{the polling frequency to check if the response file is available at Bloomberg}
+\item{frequency}{the polling frequency to check if the response file is available at Bloomberg}
 
 \item{timeout}{the timeout in seconds}
 
