@@ -22,6 +22,14 @@ RblDataLicense is built on top of [RCurl](https://cran.r-project.org/package=RCu
 
 ## Quickstart
 
+```R
+# Install RblDataLicense
+install.packages('RblDataLicense')
+
+# Load RblDataLicense
+require('RblDataLicense')
+```
+
 As the very first step, the credentials received from Bloomberg to access the SFTP server must be provided to the `RblConnect` function. The function checks for the SFTP connection to be successful and stores the credentials in the current R session. Then, all the other functions of the package will be unlocked and ready to use.
 
 ```R
