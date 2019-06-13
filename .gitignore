@@ -1,0 +1,7 @@
+.gitignore
+.Rproj
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rbuildignore
