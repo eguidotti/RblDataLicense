@@ -19,13 +19,20 @@ RblRequestBuilder(header, fields, identifiers, overrides = c())
 character string representing the request file. Upload it to query Bloomberg (see \code{\link{RblUpload}})
 }
 \description{
-The request file is generated according to Bloomberg Data License documentation
+The request file is generated according to Bloomberg Data License Documentation.
+Refer to the Documentation to build the request.
 }
 \examples{
 \dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
-                                fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+
+# Build a request file to download the daily closing prices of 
+#  EURO STOXX Index from 2005-01-01 to 2015-12-31.
+RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), 
+                                           PROGRAMNAME = 'gethistory', 
+                                           DATERANGE = '20050101|20151231'), 
+                                fields = c('PX_LAST'), 
+                                identifiers = c('SXXE Index'))
 RblRequest
 }
 

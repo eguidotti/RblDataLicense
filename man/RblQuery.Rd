@@ -15,9 +15,9 @@ RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
 
 \item{fields}{vector of Bloomberg fields. E.g. c('PX_LAST', 'PX_CLOSE', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')}
 
-\item{from}{date or string (format YYYY-MM-DD). The start time of the period of interest}
+\item{from}{date or string (format YYYY-MM-DD). Start time for the 'gethistory' request. If not provided, a 'getdata' request will be made}
 
-\item{to}{date or string (format YYYY-MM-DD). The end time of the period of interest. Ignored if \emph{from} is not provided}
+\item{to}{date or string (format YYYY-MM-DD). End time for the 'gethistory' request. Ignored if \emph{from} is not provided}
 
 \item{auto.assign}{logical. Should results be loaded to env? Ignored if \emph{from} is not provided}
 

@@ -12,8 +12,8 @@
 #' 
 #' @param identifiers vector of Bloomberg identifiers. E.g. c('SXXE Index', 'SX5E Index')
 #' @param fields vector of Bloomberg fields. E.g. c('PX_LAST', 'PX_CLOSE', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')
-#' @param from date or string (format YYYY-MM-DD). The start time of the period of interest
-#' @param to date or string (format YYYY-MM-DD). The end time of the period of interest. Ignored if \emph{from} is not provided 
+#' @param from date or string (format YYYY-MM-DD). Start time for the 'gethistory' request. If not provided, a 'getdata' request will be made
+#' @param to date or string (format YYYY-MM-DD). End time for the 'gethistory' request. Ignored if \emph{from} is not provided 
 #' @param overrides named vector of Bloomberg overrides. E.g. c('END_DT' = '20100101')
 #' @param add_headers named vector of additional headers. E.g. c(PROGRAMFLAG = 'oneshot')
 #' @param auto.assign logical. Should results be loaded to env? Ignored if \emph{from} is not provided 

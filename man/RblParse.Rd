@@ -2,7 +2,7 @@
 % Please edit documentation in R/core.R
 \name{RblParse}
 \alias{RblParse}
-\title{Parse Bloomberg response file and fetch data}
+\title{Parse Bloomberg response file and import data}
 \usage{
 RblParse(file, auto.assign = FALSE, env = parent.frame(),
   verbose = TRUE)
@@ -23,15 +23,27 @@ RblParse(file, auto.assign = FALSE, env = parent.frame(),
 }
 }
 \description{
-Parse Bloomberg response file. The PROGRAMNAME in use is auto detected: 'getdata' and 'gethistory' are supported.
+Parse Bloomberg local response files and import the data in R. The PROGRAMNAME in use is auto detected: 'getdata' and 'gethistory' are supported.
 }
 \examples{
 \dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
-                                fields = c('PX_LAST'), identifiers = c('SXXE Index'))
+
+# Build a request file to download the daily closing prices of 
+#  EURO STOXX Index from 2005-01-01 to 2015-12-31.
+RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), 
+                                           PROGRAMNAME = 'gethistory', 
+                                           DATERANGE = '20050101|20151231'), 
+                                fields = c('PX_LAST'), 
+                                identifiers = c('SXXE Index'))
+                                
+# Upload the request file
 req <- RblUpload(RblRequest)
+
+# Download the response file
 out <- RblDownload(req$out)
+
+# Import the data
 data <- RblParse(out)
 data
 }
