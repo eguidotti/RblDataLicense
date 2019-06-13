@@ -123,24 +123,24 @@ RblFiles <- function(){
 #' 
 #' The request file is generated according to Bloomberg Data License documentation
 #' 
-#' @param header names list of headers. Ex. list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata')
-#' @param fields vector of Bloomberg fields. Ex. c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')
-#' @param identifiers vector of Bloomberg identifiers. Ex c('SXXE Index', 'SX5E Index') 
-#' @param overrides named list of Bloomberg overrides. Ex list('END_DT' = '20100101')
+#' @param header named vector of headers. E.g. c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata')
+#' @param fields vector of Bloomberg fields. E.g. c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')
+#' @param identifiers vector of Bloomberg identifiers. E.g. c('SXXE Index', 'SX5E Index') 
+#' @param overrides named vector of Bloomberg overrides. E.g. c('END_DT' = '20100101')
 #' 
 #' @return character string representing the request file. Upload it to query Bloomberg (see \code{\link{RblUpload}})
 #'  
 #' @examples
 #' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#' RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
 #'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' RblRequest
 #' }
 #' 
 #' @export
 #' 
-RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
+RblRequestBuilder <- function(header, fields, identifiers, overrides = c()) {
   
   #start of file
   req <- 'START-OF-FILE'
@@ -204,7 +204,7 @@ RblRequestBuilder <- function(header, fields, identifiers, overrides = NULL) {
 #' @examples 
 #' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#' RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
 #'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' req <- RblUpload(RblRequest)
 #' req
@@ -259,7 +259,7 @@ RblUpload <- function(RblRequest, filename = format(Sys.time(), "%m%d%H%M%S"), v
 #' @examples 
 #' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#' RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
 #'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' req <- RblUpload(RblRequest)
 #' out <- RblDownload(req$out)
@@ -285,7 +285,7 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
     
     if (verbose) cat(paste0("Checking if file ", file, " is available...\r\n"))
     
-    if( class(try(suppressWarnings(download.file(paste(url, file, sep='/'), destfile = tmp, quiet = !verbose), silent = T))) == 'try-error' ) {
+    if( class(try(suppressWarnings(download.file(paste(url, file, sep='/'), destfile = tmp, quiet = !verbose)), silent = T)) == 'try-error' ) {
       
       time <- time + pollFrequency
       if(time > timeout) break
@@ -333,7 +333,7 @@ RblDownload <- function(file, pollFrequency = 60, timeout = 3600, verbose = TRUE
 #' @examples 
 #' \dontrun{
 #' # Run RblConnect first
-#' RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+#' RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
 #'                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 #' req <- RblUpload(RblRequest)
 #' out <- RblDownload(req$out)

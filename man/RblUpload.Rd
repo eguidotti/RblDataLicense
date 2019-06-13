@@ -29,7 +29,7 @@ The response file needs to be downloaded (see \code{\link{RblDownload}}) and par
 \examples{
 \dontrun{
 # Run RblConnect first
-RblRequest <- RblRequestBuilder(header = list(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
+RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), PROGRAMNAME = 'getdata'), 
                                 fields = c('PX_LAST'), identifiers = c('SXXE Index'))
 req <- RblUpload(RblRequest)
 req

@@ -10,16 +10,17 @@
 #'  \item{Parse the response file}{see \code{\link{RblParse}}}
 #' }
 #' 
-#' @param identifiers vector of Bloomberg identifiers. Ex c('SXXE Index', 'SX5E Index')
-#' @param fields vector of Bloomberg fields. Ex. c('PX_LAST', 'PX_CLOSE', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')
+#' @param identifiers vector of Bloomberg identifiers. E.g. c('SXXE Index', 'SX5E Index')
+#' @param fields vector of Bloomberg fields. E.g. c('PX_LAST', 'PX_CLOSE', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')
 #' @param from date or string (format YYYY-MM-DD). The start time of the period of interest
 #' @param to date or string (format YYYY-MM-DD). The end time of the period of interest. Ignored if \emph{from} is not provided 
-#' @param overrides named list of Bloomberg overrides. Ex list('END_DT' = '20100101')
+#' @param overrides named vector of Bloomberg overrides. E.g. c('END_DT' = '20100101')
+#' @param add_headers named vector of additional headers. E.g. c(PROGRAMFLAG = 'oneshot')
 #' @param auto.assign logical. Should results be loaded to env? Ignored if \emph{from} is not provided 
 #' @param env where to create objects if auto.assign = TRUE
-#' @param category Data License categories to enable (e.g. 'SECMASTER', 'PRICING', 'FUNDAMENTALS', ...). WARNING! Each DL category is billed separately, so check your DL license carefully!
-#' @param limit prevent requesting data for more than this amout of identifiers. This is done to help you keep your budget in cntrol. Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing the limit. 
-#' @param split maximum number of identifiers to process at once. Split requests to avoid memory leaks
+#' @param category vector of Data License categories to enable. E.g. c('SECMASTER', 'PRICING', 'FUNDAMENTALS'). WARNING! Each DL category is billed separately, so check your DL license carefully!
+#' @param limit prevent requesting data for more than this amout of identifiers. This is done to help you keeping your budget under control. Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing this limit. 
+#' @param split maximum number of identifiers to process at once. Requests are split to avoid memory leaks.
 #' @param pollFrequency the polling frequency to check if the response file is available at Bloomberg
 #' @param timeout the timeout in seconds
 #' @param filename name assigned to the remote file. Only alphanumeric characters are allowed. Invalid characters are removed. 
@@ -55,10 +56,11 @@ RblQuery <- function(
   fields, 
   from = NULL, 
   to = Sys.Date(), 
-  overrides = NULL,
   auto.assign = FALSE, 
   env = parent.frame(),
   category = c(),
+  add_headers = c(),
+  overrides = c(),
   limit = 5,
   split = 100,
   pollFrequency = 60, 
@@ -75,18 +77,21 @@ RblQuery <- function(
   }
   
   # header
-  header <- list()
-  header$FIRMNAME <- RblUser()
-  header$PROGRAMNAME <- ifelse(is.null(from), 'getdata', 'gethistory')
+  header <- c()
+  header[['FIRMNAME']] <- RblUser()
+  header[['PROGRAMNAME']] <- ifelse(is.null(from), 'getdata', 'gethistory')
   
   # Enable DL categories
   for(i in category) header[[i]] <- 'yes'
   
   # header for gethistory
-  if(header$PROGRAMNAME=='gethistory'){
+  if(header[['PROGRAMNAME']]=='gethistory'){
     fmt <- '%Y%m%d'
-    header$DATERANGE <- paste0(format(as.Date(from), fmt), '|', format(as.Date(to), fmt))
+    header[['DATERANGE']] <- paste0(format(as.Date(from), fmt), '|', format(as.Date(to), fmt))
   }
+  
+  # add headers
+  for(i in names(add_headers)) header[[i]] <- add_headers[[i]]
   
   # info 
   i <- list()
