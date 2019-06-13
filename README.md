@@ -1,6 +1,6 @@
 # RblDataLicense
 
-![](https://www.r-pkg.org/badges/version/RblDataLicense)![](https://www.r-pkg.org/badges/last-release/RblDataLicense)![](https://cranlogs.r-pkg.org/badges/grand-total/RblDataLicense)
+![](https://www.r-pkg.org/badges/version/RblDataLicense) ![](https://www.r-pkg.org/badges/last-release/RblDataLicense) ![](https://cranlogs.r-pkg.org/badges/grand-total/RblDataLicense)
 
 
 
