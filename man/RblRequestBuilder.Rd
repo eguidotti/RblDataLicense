@@ -28,11 +28,14 @@ Refer to the Documentation to build the request.
 
 # Build a request file to download the daily closing prices of 
 #  EURO STOXX Index from 2005-01-01 to 2015-12-31.
-RblRequest <- RblRequestBuilder(header = c(FIRMNAME = RblUser(), 
-                                           PROGRAMNAME = 'gethistory', 
-                                           DATERANGE = '20050101|20151231'), 
-                                fields = c('PX_LAST'), 
-                                identifiers = c('SXXE Index'))
+RblRequest <- 
+     RblRequestBuilder(
+          header = c(FIRMNAME = RblUser(), 
+                     PROGRAMNAME = 'gethistory', 
+                     DATERANGE = '20050101|20151231'),
+          fields = c('PX_LAST'), 
+          identifiers = c('SXXE Index')
+     )
 RblRequest
 }
 
