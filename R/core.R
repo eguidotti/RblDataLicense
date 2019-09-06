@@ -1,4 +1,4 @@
-#' Create an SFTP connection to Bloomberg Datalicense
+#' Create an SFTP connection to Bloomberg Data License
 #' 
 #' An sftp connection to Bloomberg Datalicense is established. On some Linux systems, this may
 #' not work out of the box, as libcurl does not natively support sftp. In that case, you need to 
@@ -7,6 +7,9 @@
 #' 
 #' @param user The account number assigned by Bloomberg
 #' @param pw The password assigned by Bloomberg 
+#' @param host The connection host
+#' @param port The connection port
+#' @param protocol The connection protocol
 #' @param verbose logical. Should R report extra information on progress?
 #' 
 #' @return logical. Is the connection succesful?
@@ -21,19 +24,14 @@
 #' 
 #' @export
 #' 
-RblConnect <- function(user, pw, verbose = TRUE) {
- 
-    # sftp
-    host <- 'dlsftp.bloomberg.com'
-    port <- 30206
-    protocol <- 'sftp'
+RblConnect <- function(user, pw, host = 'dlsftp.bloomberg.com', port = '30206', protocol = 'sftp', verbose = TRUE) {
     
     # ftp://User:Password@FTPServer/Destination.html
     url <- paste0(protocol, '://', user, ':', pw, '@', host, ':', port)
     
     # test connection
     if( class(try(getURL(url), silent = T)) == 'try-error' ){ 
-      if(verbose) cat('Authentication failure: check your credentials and whitelist the IP address in use. Contact Bloomberg support for help.')
+      if(verbose) cat('Authentication failure: check your configurations and whitelist the IP address in use. Contact Bloomberg support for help.')
       return(FALSE)
     }
       

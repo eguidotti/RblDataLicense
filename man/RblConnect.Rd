@@ -2,14 +2,21 @@
 % Please edit documentation in R/core.R
 \name{RblConnect}
 \alias{RblConnect}
-\title{Create an SFTP connection to Bloomberg Datalicense}
+\title{Create an SFTP connection to Bloomberg Data License}
 \usage{
-RblConnect(user, pw, verbose = TRUE)
+RblConnect(user, pw, host = "dlsftp.bloomberg.com", port = "30206",
+  protocol = "sftp", verbose = TRUE)
 }
 \arguments{
 \item{user}{The account number assigned by Bloomberg}
 
 \item{pw}{The password assigned by Bloomberg}
+
+\item{host}{The connection host}
+
+\item{port}{The connection port}
+
+\item{protocol}{The connection protocol}
 
 \item{verbose}{logical. Should R report extra information on progress?}
 }
