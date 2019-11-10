@@ -17,7 +17,7 @@ Description: R interface to access prices and market data with the
     endorsed, or approved by 'Bloomberg' or any of its affiliates.
     'Bloomberg' is a registered trademark.
 License: GPL-3
-URL: https://emanueleguidotti.dev/RblDataLicense/
+URL: https://rbldatalicense.r-package.org
 BugReports: https://github.com/emanuele-guidotti/RblDataLicense/issues/
 Depends:
     RCurl,
