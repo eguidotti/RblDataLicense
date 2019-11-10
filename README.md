@@ -85,10 +85,8 @@ All code of the RblDataLicense is released under the [GNU GPL-3](https://cran.r-
 
 
 
-## Additional Resources
+## Documentation
 
-https://emanueleguidotti.dev/RblDataLicense
+https://rbldatalicense.r-package.org
 
 https://cran.r-project.org/package=RblDataLicense
-
-https://www.bloomberg.com/professional/product/data-license
