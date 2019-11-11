@@ -1,10 +1,10 @@
 Package: RblDataLicense
 Type: Package
 Title: R Interface to 'Bloomberg Data License'
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: person(given = "Emanuele", 
 				  family = "Guidotti", 
-				  email = "emanuele.guidotti@hotmail.it", 
+				  email = "emanuele.guidotti@unine.ch", 
 				  role = c("aut", "cre"), 
 				  comment = c(ORCID = "0000-0002-8961-6623"))
 Description: R interface to access prices and market data with the 
