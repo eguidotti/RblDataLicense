@@ -71,6 +71,11 @@ data <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'),
                  from = '2005-01-01')
 ```
 
+## Documentation
+
+https://rbldatalicense.r-package.org
+
+https://cran.r-project.org/package=RblDataLicense
 
 
 ## Acknowledgements
@@ -83,10 +88,3 @@ The RblDataLicense was developed at Algo Finance Sagl, software house start-up d
 
 All code of the RblDataLicense is released under the [GNU GPL-3](https://cran.r-project.org/web/licenses/GPL-3). This software and its author are in no way affiliated, endorsed, or approved by "Bloomberg" or any of its affiliates. "Bloomberg" is a registered trademark. All trademarks and registered trademarks are the property of their respective owners.
 
-
-
-## Documentation
-
-https://rbldatalicense.r-package.org
-
-https://cran.r-project.org/package=RblDataLicense
