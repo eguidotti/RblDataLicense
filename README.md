@@ -79,14 +79,20 @@ data <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'),
 
 [RblDataLicense: R Interface to Bloomberg Data License](https://doi.org/10.13140/RG.2.2.23216.71680)
 
-
 ## Acknowledgements
 
 The RblDataLicense was developed at Algo Finance Sagl, software house start-up developing financial algorithms for the asset management industry. The Swiss company is gratefully acknowledged for open-sourcing the software.
-
-
 
 ## Legal
 
 All code of the RblDataLicense is released under the [GNU GPL-3](https://cran.r-project.org/web/licenses/GPL-3). This software and its author are in no way affiliated, endorsed, or approved by "Bloomberg" or any of its affiliates. "Bloomberg" is a registered trademark. All trademarks and registered trademarks are the property of their respective owners.
 
+## Additional Resources
+
+https://rbldatalicense.r-package.org
+
+https://emanueleguidotti.dev/RblDataLicense
+
+https://cran.r-project.org/package=RblDataLicense
+
+https://www.bloomberg.com/professional/product/data-license
