@@ -2,10 +2,10 @@ bibentry(
 	bibtype      = "Article",
 	header       = "To cite RblDataLicense in publications, please use:",
 	title        = "RblDataLicense: R Interface to Bloomberg Data License",
-	author       = "Guidotti, Emanuele",
+	author       = "Emanuele Guidotti",
 	journal      = "ResearchGate",
 	year         = "2019",
 	month        = "11",
 	doi          = "10.13140/RG.2.2.23216.71680",
-	textVersion  = "Guidotti, Emanuele. (2019). RblDataLicense: R Interface to Bloomberg Data License. 10.13140/RG.2.2.23216.71680."
+	textVersion  = "Emanuele Guidotti (2019). RblDataLicense: R Interface to Bloomberg Data License. DOI: 10.13140/RG.2.2.23216.71680"
 )
