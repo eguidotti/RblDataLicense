@@ -73,25 +73,11 @@ data <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'),
 
 ## Documentation
 
-https://cran.r-project.org/package=RblDataLicense
-
+[https://cran.r-project.org/web/packages/calculus/calculus.pdf](https://cran.r-project.org/web/packages/calculus/calculus.pdf)
 
 ## Papers
 
-### RblDataLicense: R Interface to Bloomberg Data License
-
-As the technology infrastructure increases in sophistication, Bloomberg released the Data License service, the platform that delivers Bloomberg’s datasets. For the first time, users can directly program against Bloomberg’s comprehensive historical data, servicing the growing needs of data science. The RblDataLicense package aims at providing a user-friendly R interface to the Data License service. As a prerequisite, a valid Data License from Bloomberg is needed. This software and its author are in no way affiliated, endorsed, or approved by “Bloomberg” or any of its affiliates. “Bloomberg” is a registered trademark.
-
-https://doi.org/10.13140/RG.2.2.23216.71680
-
-
-## Conferences
-
-### The Second YUIMA Conference, Rome
-
-The Conference is supported by Japan Science and Technology Agency CREST JPMJCR14D7; and Japan Society for the Promotion of Science Grants-in-Aid for Scientific Research No. 17H01702 (Scientific Research). The Conference takes place at the Department of Statistical Science, Sapienza, University of Rome on 22-25 March 2019.
-
-https://rbldatalicense.r-package.org/conference/the-second-yuima-conference/
+[RblDataLicense: R Interface to Bloomberg Data License](https://doi.org/10.13140/RG.2.2.23216.71680)
 
 
 ## Acknowledgements
