@@ -73,7 +73,7 @@ data <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'),
 
 ## Documentation
 
-[https://cran.r-project.org/web/packages/RblDataLicense/RblDataLicense.pdf](https://cran.r-project.org/web/packages/RblDataLicense/RblDataLicense.pdf)
+[https://cran.r-project.org/package=RblDataLicense/RblDataLicense.pdf](https://cran.r-project.org/package=RblDataLicense/RblDataLicense.pdf)
 
 ## Papers
 
