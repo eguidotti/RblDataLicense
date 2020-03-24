@@ -87,12 +87,3 @@ The RblDataLicense was developed at Algo Finance Sagl, software house start-up d
 
 All code of the RblDataLicense is released under the [GNU GPL-3](https://cran.r-project.org/web/licenses/GPL-3). This software and its author are in no way affiliated, endorsed, or approved by "Bloomberg" or any of its affiliates. "Bloomberg" is a registered trademark. All trademarks and registered trademarks are the property of their respective owners.
 
-## Additional Resources
-
-[https://rbldatalicense.r-package.org](https://rbldatalicense.r-package.org)
-
-[https://emanueleguidotti.dev/RblDataLicense](https://emanueleguidotti.dev/RblDataLicense)
-
-[https://cran.r-project.org/package=RblDataLicense](https://cran.r-project.org/package=RblDataLicense)
-
-[https://www.bloomberg.com/professional/product/data-license](https://www.bloomberg.com/professional/product/data-license)
