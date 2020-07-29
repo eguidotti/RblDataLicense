@@ -1,3 +1,7 @@
+# RblDataLicense 0.2.3
+
+- Fix `RblDownload()` for Windows users
+
 # RblDataLicense 0.2.2
 
 - added vignette: _Connecting R to Bloomberg Data License_
