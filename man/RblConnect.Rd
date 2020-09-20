@@ -4,8 +4,14 @@
 \alias{RblConnect}
 \title{Create an SFTP connection to Bloomberg Data License}
 \usage{
-RblConnect(user, pw, host = "dlsftp.bloomberg.com", port = "30206",
-  protocol = "sftp", verbose = TRUE)
+RblConnect(
+  user,
+  pw,
+  host = "dlsftp.bloomberg.com",
+  port = "30206",
+  protocol = "sftp",
+  verbose = TRUE
+)
 }
 \arguments{
 \item{user}{The account number assigned by Bloomberg}

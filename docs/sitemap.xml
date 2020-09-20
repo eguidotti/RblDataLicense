@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/index.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblConnect.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblDownload.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblFiles.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblParse.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblQuery.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblRequestBuilder.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblUpload.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblUrl.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/reference/RblUser.html</loc>
+  </url>
+  <url>
+    <loc>https://rbldatalicense.guidotti.dev/articles/RblDataLicense.html</loc>
+  </url>
+</urlset>

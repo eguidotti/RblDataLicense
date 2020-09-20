@@ -4,11 +4,23 @@
 \alias{RblQuery}
 \title{Query Bloomberg and Fetch Data}
 \usage{
-RblQuery(identifiers, fields, from = NULL, to = Sys.Date(),
-  auto.assign = FALSE, env = parent.frame(), category = c(),
-  add_headers = c(), overrides = c(), limit = 5, split = 100,
-  frequency = 60, timeout = 3600, filename = format(Sys.time(),
-  "\%m\%d\%H\%M\%S"), verbose = TRUE)
+RblQuery(
+  identifiers,
+  fields,
+  from = NULL,
+  to = Sys.Date(),
+  auto.assign = FALSE,
+  env = parent.frame(),
+  category = c(),
+  add_headers = c(),
+  overrides = c(),
+  limit = 5,
+  split = 100,
+  frequency = 60,
+  timeout = 3600,
+  filename = format(Sys.time(), "\%m\%d\%H\%M\%S"),
+  verbose = TRUE
+)
 }
 \arguments{
 \item{identifiers}{vector of Bloomberg identifiers. E.g. c('SXXE Index', 'SX5E Index')}

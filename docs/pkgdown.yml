@@ -1,0 +1,10 @@
+pandoc: 2.9.1.1
+pkgdown: 1.5.1
+pkgdown_sha: ~
+articles:
+  RblDataLicense: RblDataLicense.html
+last_built: 2020-09-20T15:14Z
+urls:
+  reference: https://rbldatalicense.guidotti.dev/reference
+  article: https://rbldatalicense.guidotti.dev/articles
+

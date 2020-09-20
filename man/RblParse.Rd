@@ -4,8 +4,7 @@
 \alias{RblParse}
 \title{Parse Bloomberg response file and import data}
 \usage{
-RblParse(file, auto.assign = FALSE, env = parent.frame(),
-  verbose = TRUE)
+RblParse(file, auto.assign = FALSE, env = parent.frame(), verbose = TRUE)
 }
 \arguments{
 \item{file}{character string representing the local file to parse (see \code{\link{RblDownload}})}

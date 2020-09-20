@@ -1,7 +1,6 @@
 # RblDataLicense
 
-![](https://www.r-pkg.org/badges/version/RblDataLicense) ![](https://www.r-pkg.org/badges/last-release/RblDataLicense) ![](https://cranlogs.r-pkg.org/badges/grand-total/RblDataLicense)
-
+[![](https://www.r-pkg.org/badges/version/RblDataLicense)](https://cloud.r-project.org/package=RblDataLicense) [![](https://www.r-pkg.org/badges/last-release/RblDataLicense)](https://cloud.r-project.org/package=RblDataLicense) [![](https://cranlogs.r-pkg.org/badges/grand-total/RblDataLicense)](https://cloud.r-project.org/package=RblDataLicense)
 
 
 The __RblDataLicense__ package aims at providing an easy R interface to access prices and market data with the __Bloomberg Data License__ service. Unlike the [Rblpapi](https://cran.r-project.org/package=Rblpapi) package for Bloomberg Terminal users, [RblDataLicense](https://cran.r-project.org/package=RblDataLicense) does not require the user to set up any working Bloomberg installation. As a prerequisite, a valid Data License from Bloomberg is needed together with the corresponding SFTP credentials and whitelisting of the IP from which accessing the service.
@@ -18,7 +17,11 @@ The Bloomberg Data License Service is billed on a pay-per-use model, based on th
 
 RblDataLicense is built on top of [RCurl](https://cran.r-project.org/package=RCurl), a wrapper for [libcurl](https://curl.haxx.se/libcurl/). The package establishes SFTP connections to Bloomberg Data License. On some Linux systems, this may not work out of the box, as libcurl does not natively support SFTP. In that case, the user needs to compile curl with SFTP support first. 
 
+## Encryption
 
+The package does NOT support encrypted files. As stated in the Data License documentation:
+
+_With SFTP via the Internet, there is no need for additional payload/content encryption. Clients are discouraged from using legacy DES software encryption option. Existing clients still using DES encryption can contact Customer Support to have DES payload/content encryption removed from their account._
 
 ## Quickstart
 
@@ -70,14 +73,6 @@ data <- RblQuery(fields = c('PX_LAST', 'PX_OPEN', 'PX_HIGH', 'PX_LOW'),
                  identifiers = c('SXXE Index', "SX5E Index"), 
                  from = '2005-01-01')
 ```
-
-## Documentation
-
-[https://cran.r-project.org/package=RblDataLicense/RblDataLicense.pdf](https://cran.r-project.org/package=RblDataLicense/RblDataLicense.pdf)
-
-## Papers
-
-[RblDataLicense: R Interface to Bloomberg Data License](https://doi.org/10.13140/RG.2.2.23216.71680)
 
 ## Acknowledgements
 
