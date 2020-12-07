@@ -20,6 +20,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
+          install.packages('pkgdown')
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
       - name: Install package
