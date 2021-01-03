@@ -1,6 +1,6 @@
 # RblDataLicense
 
-[![](https://www.r-pkg.org/badges/version/RblDataLicense)](https://CRAN.R-project.org/package=RblDataLicense) [![](https://www.r-pkg.org/badges/last-release/RblDataLicense)](https://CRAN.R-project.org/package=RblDataLicense) [![](https://cranlogs.r-pkg.org/badges/grand-total/RblDataLicense)](https://CRAN.R-project.org/package=RblDataLicense) [![](https://travis-ci.org/eguidotti/RblDataLicense.svg?branch=master)](https://travis-ci.org/eguidotti/RblDataLicense)
+[![](https://www.r-pkg.org/badges/version/RblDataLicense)](https://CRAN.R-project.org/package=RblDataLicense) [![](https://www.r-pkg.org/badges/last-release/RblDataLicense)](https://CRAN.R-project.org/package=RblDataLicense) [![](https://cranlogs.r-pkg.org/badges/grand-total/RblDataLicense)](https://CRAN.R-project.org/package=RblDataLicense) [![](https://travis-ci.com/eguidotti/RblDataLicense.svg?branch=master)](https://travis-ci.com/eguidotti/RblDataLicense)
 
 
 The __RblDataLicense__ package aims at providing an easy R interface to access prices and market data with the __Bloomberg Data License__ service. Unlike the [Rblpapi](https://cran.r-project.org/package=Rblpapi) package for Bloomberg Terminal users, [RblDataLicense](https://cran.r-project.org/package=RblDataLicense) does not require the user to set up any working Bloomberg installation. As a prerequisite, a valid Data License from Bloomberg is needed together with the corresponding SFTP credentials and whitelisting of the IP from which accessing the service.
