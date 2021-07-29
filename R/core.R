@@ -24,7 +24,7 @@
 #' 
 #' @export
 #' 
-RblConnect <- function(user, pw, host = 'dlsftp.bloomberg.com', port = '30206', protocol = 'sftp', verbose = TRUE) {
+RblConnect <- function(user, pw, host = 'sftp.bloomberg.com', port = '22', protocol = 'sftp', verbose = TRUE) {
     
     # ftp://User:Password@FTPServer/Destination.html
     url <- paste0(protocol, '://', user, ':', pw, '@', host, ':', port)

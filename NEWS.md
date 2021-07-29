@@ -1,3 +1,7 @@
+# RblDataLicense 0.2.4
+
+- Updated default parameters in `RblConnect()`. See issue [#4](https://github.com/eguidotti/RblDataLicense/issues/4)
+
 # RblDataLicense 0.2.3
 
 - Fix `RblDownload()` for Windows users

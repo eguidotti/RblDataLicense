@@ -7,8 +7,8 @@
 RblConnect(
   user,
   pw,
-  host = "dlsftp.bloomberg.com",
-  port = "30206",
+  host = "sftp.bloomberg.com",
+  port = "22",
   protocol = "sftp",
   verbose = TRUE
 )
