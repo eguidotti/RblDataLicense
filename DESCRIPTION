@@ -22,4 +22,4 @@ BugReports: https://github.com/eguidotti/RblDataLicense/issues
 Depends: RCurl, xts
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
