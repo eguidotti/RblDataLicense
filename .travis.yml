@@ -6,7 +6,6 @@ r:
 
 os:
   - linux
-  - osx
   
 env:
   - _R_CHECK_TESTS_NLINES_=0
