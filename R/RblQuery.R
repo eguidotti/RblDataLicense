@@ -49,6 +49,8 @@
 #' str(data)
 #' }
 #' 
+#' @importFrom methods is
+#' 
 #' @export
 #' 
 RblQuery <- function(
@@ -133,9 +135,9 @@ RblQuery <- function(
     data <- RblParse(file = file, auto.assign = auto.assign, env = env, verbose = verbose)
     # store info
     if(is.null(i$data)) i$data <- data    
-    else if (class(data)=='data.frame') i$data <- rbind(i$data, data)
-    else if (class(data)=='list') for(id in names(data)) i$data[[id]] <- data[[id]]
-    else if (class(data)=='character') i$data <- c(i$data, data)
+    else if (is(data, 'data.frame')) i$data <- rbind(i$data, data)
+    else if (is(data, 'list')) for(id in names(data)) i$data[[id]] <- data[[id]]
+    else if (is(data, 'character')) i$data <- c(i$data, data)
     
   }
 

@@ -2,7 +2,7 @@
 authors: 
   ? "Emanuele Guidotti"
   : 
-    href: "https://guidotti.dev"
+    href: "https://eguidotti.com"
 home: 
   description: "R interface to access prices and market data with the 
     Bloomberg Data License service. As a prerequisite, a valid Data License from Bloomberg is needed 
@@ -22,4 +22,4 @@ template:
   params: 
     ganalytics: UA-112916657-2
 title: "RblDataLicense"
-url: "https://rbldatalicense.guidotti.dev"
+url: "https://rbldatalicense.eguidotti.com"

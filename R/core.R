@@ -21,6 +21,7 @@
 #' }
 #' 
 #' @import RCurl
+#' @importFrom methods is
 #' 
 #' @export
 #' 
@@ -30,7 +31,7 @@ RblConnect <- function(user, pw, host = 'sftp.bloomberg.com', port = '22', proto
     url <- paste0(protocol, '://', user, ':', pw, '@', host, ':', port)
     
     # test connection
-    if( class(try(getURL(url), silent = T)) == 'try-error' ){ 
+    if( is(try(getURL(url), silent = T), 'try-error') ){ 
       if(verbose) cat('Authentication failure: check your configurations and whitelist the IP address in use. Contact Bloomberg support for help.')
       return(FALSE)
     }
@@ -298,6 +299,8 @@ RblUpload <- function(RblRequest, filename = format(Sys.time(), "%m%d%H%M%S"), v
 #' out
 #' }
 #' 
+#' @importFrom methods is
+#' 
 #' @export
 #' 
 RblDownload <- function(file, frequency = 60, timeout = 3600, verbose = TRUE) {
@@ -317,7 +320,7 @@ RblDownload <- function(file, frequency = 60, timeout = 3600, verbose = TRUE) {
     
     if (verbose) cat(paste0("Checking if file ", file, " is available...\r\n"))
     
-    if( class(try(suppressWarnings(utils::download.file(paste(url, file, sep='/'), destfile = tmp, method = "libcurl", quiet = !verbose)), silent = T)) == 'try-error' ) {
+    if( is(try(suppressWarnings(utils::download.file(paste(url, file, sep='/'), destfile = tmp, method = "libcurl", quiet = !verbose)), silent = T), 'try-error') ) {
       
       time <- time + frequency
       if(time > timeout) break

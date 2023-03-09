@@ -1,3 +1,7 @@
+# RblDataLicense 0.2.5
+
+- Site moved to https://rbldatalicense.eguidotti.com
+
 # RblDataLicense 0.2.4
 
 - Updated default parameters in `RblConnect()`. See issue [#4](https://github.com/eguidotti/RblDataLicense/issues/4)

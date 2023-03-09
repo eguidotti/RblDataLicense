@@ -1,7 +1,7 @@
 Package: RblDataLicense
 Type: Package
 Title: R Interface to 'Bloomberg Data License'
-Version: 0.2.4
+Version: 0.2.5
 Authors@R: person(given = "Emanuele", 
 				  family = "Guidotti", 
 				  email = "emanuele.guidotti@unine.ch", 
@@ -17,9 +17,9 @@ Description: R interface to access prices and market data with the
     endorsed, or approved by 'Bloomberg' or any of its affiliates.
     'Bloomberg' is a registered trademark.
 License: GPL-3
-URL: https://rbldatalicense.guidotti.dev
+URL: https://rbldatalicense.eguidotti.com
 BugReports: https://github.com/eguidotti/RblDataLicense/issues
-Depends: RCurl, xts
+Depends: RCurl, xts, methods
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
