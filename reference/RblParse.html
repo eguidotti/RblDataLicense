@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RblDataLicense</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -59,23 +59,32 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">RblParse</span><span class="op">(</span><span class="va">file</span>, auto.assign <span class="op">=</span> <span class="cn">FALSE</span>, env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">RblParse</span><span class="op">(</span><span class="va">file</span>, auto.assign <span class="op">=</span> <span class="cn">FALSE</span>, env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>file</dt>
 <dd><p>character string representing the local file to parse (see <code><a href="RblDownload.html">RblDownload</a></code>)</p></dd>
+
+
 <dt>auto.assign</dt>
 <dd><p>logical. Should results be loaded to env when using PROGRAMNAME=gethistory?</p></dd>
+
+
 <dt>env</dt>
 <dd><p>where to create objects if auto.assign = TRUE</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical. Should R report extra information on progress?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <dl><dt>PROGRAMNAME=getdata</dt>
+    
+
+<dl><dt>PROGRAMNAME=getdata</dt>
 <dd><p>data.frame containig identifiers (rows) and fields (columns). NULL on failure.</p></dd>
 
  <dt>PROGRAMNAME=gethistory</dt>
@@ -86,31 +95,31 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Run RblConnect first</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Build a request file to download the daily closing prices of </span></span>
-<span class="r-in"><span class="co">#  EURO STOXX Index from 2005-01-01 to 2015-12-31.</span></span>
-<span class="r-in"><span class="va">RblRequest</span> <span class="op">&lt;-</span> </span>
-<span class="r-in">     <span class="fu"><a href="RblRequestBuilder.html">RblRequestBuilder</a></span><span class="op">(</span></span>
-<span class="r-in">          header <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>FIRMNAME <span class="op">=</span> <span class="fu"><a href="RblUser.html">RblUser</a></span><span class="op">(</span><span class="op">)</span>, </span>
-<span class="r-in">                     PROGRAMNAME <span class="op">=</span> <span class="st">'gethistory'</span>, </span>
-<span class="r-in">                     DATERANGE <span class="op">=</span> <span class="st">'20050101|20151231'</span><span class="op">)</span>,</span>
-<span class="r-in">          fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PX_LAST'</span><span class="op">)</span>, </span>
-<span class="r-in">          identifiers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'SXXE Index'</span><span class="op">)</span></span>
-<span class="r-in">     <span class="op">)</span></span>
-<span class="r-in">                                </span>
-<span class="r-in"><span class="co"># Upload the request file</span></span>
-<span class="r-in"><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="RblUpload.html">RblUpload</a></span><span class="op">(</span><span class="va">RblRequest</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Download the response file</span></span>
-<span class="r-in"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="RblDownload.html">RblDownload</a></span><span class="op">(</span><span class="va">req</span><span class="op">$</span><span class="va">out</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Import the data</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">RblParse</span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Run RblConnect first</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Build a request file to download the daily closing prices of </span></span></span>
+<span class="r-in"><span><span class="co">#  EURO STOXX Index from 2005-01-01 to 2015-12-31.</span></span></span>
+<span class="r-in"><span><span class="va">RblRequest</span> <span class="op">&lt;-</span> </span></span>
+<span class="r-in"><span>     <span class="fu"><a href="RblRequestBuilder.html">RblRequestBuilder</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          header <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>FIRMNAME <span class="op">=</span> <span class="fu"><a href="RblUser.html">RblUser</a></span><span class="op">(</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                     PROGRAMNAME <span class="op">=</span> <span class="st">'gethistory'</span>, </span></span>
+<span class="r-in"><span>                     DATERANGE <span class="op">=</span> <span class="st">'20050101|20151231'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PX_LAST'</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>          identifiers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'SXXE Index'</span><span class="op">)</span></span></span>
+<span class="r-in"><span>     <span class="op">)</span></span></span>
+<span class="r-in"><span>                                </span></span>
+<span class="r-in"><span><span class="co"># Upload the request file</span></span></span>
+<span class="r-in"><span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="RblUpload.html">RblUpload</a></span><span class="op">(</span><span class="va">RblRequest</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Download the response file</span></span></span>
+<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="RblDownload.html">RblDownload</a></span><span class="op">(</span><span class="va">req</span><span class="op">$</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Import the data</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">RblParse</span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -121,11 +130,11 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://guidotti.dev" class="external-link">Emanuele Guidotti</a>.</p>
+  <p></p><p>Developed by <a href="https://eguidotti.com" class="external-link">Emanuele Guidotti</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

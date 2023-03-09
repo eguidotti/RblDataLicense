@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RblDataLicense</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -59,61 +59,92 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">RblQuery</span><span class="op">(</span>
-  <span class="va">identifiers</span>,
-  <span class="va">fields</span>,
-  from <span class="op">=</span> <span class="cn">NULL</span>,
-  to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,
-  auto.assign <span class="op">=</span> <span class="cn">FALSE</span>,
-  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>,
-  category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,
-  add_headers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,
-  overrides <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,
-  limit <span class="op">=</span> <span class="fl">5</span>,
-  split <span class="op">=</span> <span class="fl">100</span>,
-  frequency <span class="op">=</span> <span class="fl">60</span>,
-  timeout <span class="op">=</span> <span class="fl">3600</span>,
-  filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%m%d%H%M%S"</span><span class="op">)</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">RblQuery</span><span class="op">(</span></span>
+<span>  <span class="va">identifiers</span>,</span>
+<span>  <span class="va">fields</span>,</span>
+<span>  from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  auto.assign <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  add_headers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  overrides <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  split <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  frequency <span class="op">=</span> <span class="fl">60</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">3600</span>,</span>
+<span>  filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%m%d%H%M%S"</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>identifiers</dt>
 <dd><p>vector of Bloomberg identifiers. E.g. c('SXXE Index', 'SX5E Index')</p></dd>
+
+
 <dt>fields</dt>
 <dd><p>vector of Bloomberg fields. E.g. c('PX_LAST', 'PX_CLOSE', 'PX_OPEN', 'PX_HIGH', 'PX_LOW')</p></dd>
+
+
 <dt>from</dt>
 <dd><p>date or string (format YYYY-MM-DD). Start time for the 'gethistory' request. If not provided, a 'getdata' request will be made</p></dd>
+
+
 <dt>to</dt>
 <dd><p>date or string (format YYYY-MM-DD). End time for the 'gethistory' request. Ignored if <em>from</em> is not provided</p></dd>
+
+
 <dt>auto.assign</dt>
 <dd><p>logical. Should results be loaded to env? Ignored if <em>from</em> is not provided</p></dd>
+
+
 <dt>env</dt>
 <dd><p>where to create objects if auto.assign = TRUE</p></dd>
+
+
 <dt>category</dt>
 <dd><p>vector of Data License categories to enable. E.g. c('SECMASTER', 'PRICING', 'FUNDAMENTALS'). WARNING! Each DL category is billed separately, so check your DL license carefully!</p></dd>
+
+
 <dt>add_headers</dt>
 <dd><p>named vector of additional headers. E.g. c(PROGRAMFLAG = 'oneshot')</p></dd>
+
+
 <dt>overrides</dt>
 <dd><p>named vector of Bloomberg overrides. E.g. c('END_DT' = '20100101')</p></dd>
+
+
 <dt>limit</dt>
 <dd><p>prevent requesting data for more than this amout of identifiers. This is done to help you keeping your budget under control. Data License is billing based on the amout of instruments you request, so check your DL license carefully before increasing this limit.</p></dd>
+
+
 <dt>split</dt>
 <dd><p>maximum number of identifiers to process at once. Requests are split to avoid memory leaks.</p></dd>
+
+
 <dt>frequency</dt>
 <dd><p>the polling frequency to check if the response file is available at Bloomberg</p></dd>
+
+
 <dt>timeout</dt>
 <dd><p>the timeout in seconds</p></dd>
+
+
 <dt>filename</dt>
 <dd><p>name assigned to the remote file. Only alphanumeric characters are allowed. Invalid characters are removed.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical. Should R report extra information on progress?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list with components</p><dl><dt>req</dt>
+    
+
+<p>A list with components</p><dl><dt>req</dt>
 <dd><p>List of characters representing each of the request files uploaded to Bloomberg</p></dd>
 
  <dt>out</dt>
@@ -143,14 +174,14 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Run RblConnect first</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">RblQuery</span><span class="op">(</span>fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PX_LAST'</span>, <span class="st">'PX_OPEN'</span>, <span class="st">'PX_HIGH'</span>, <span class="st">'PX_LOW'</span><span class="op">)</span>, </span>
-<span class="r-in">                 identifiers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'SXXE Index'</span>, <span class="st">"SX5E Index"</span><span class="op">)</span>, </span>
-<span class="r-in">                 from <span class="op">=</span> <span class="st">'2005-01-01'</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Run RblConnect first</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">RblQuery</span><span class="op">(</span>fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PX_LAST'</span>, <span class="st">'PX_OPEN'</span>, <span class="st">'PX_HIGH'</span>, <span class="st">'PX_LOW'</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                 identifiers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'SXXE Index'</span>, <span class="st">"SX5E Index"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                 from <span class="op">=</span> <span class="st">'2005-01-01'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -161,11 +192,11 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://guidotti.dev" class="external-link">Emanuele Guidotti</a>.</p>
+  <p></p><p>Developed by <a href="https://eguidotti.com" class="external-link">Emanuele Guidotti</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
