@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   RblDataLicense: RblDataLicense.html
-last_built: 2023-03-09T23:03Z
+last_built: 2023-03-10T10:24Z
 urls:
   reference: https://rbldatalicense.eguidotti.com/reference
   article: https://rbldatalicense.eguidotti.com/articles
