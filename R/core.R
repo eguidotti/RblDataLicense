@@ -361,7 +361,7 @@ RblDownload <- function(file, frequency = 60, timeout = 3600, verbose = TRUE) {
 #' 
 #' @return 
 #' \describe{
-#'  \item{PROGRAMNAME=getdata}{data.frame containig identifiers (rows) and fields (columns). NULL on failure.}
+#'  \item{PROGRAMNAME=getdata}{data.frame containing identifiers (rows) and fields (columns). NULL on failure.}
 #'  \item{PROGRAMNAME=gethistory}{list of xts objects. If \emph{auto.assign}=TRUE the xts objects are loaded in \emph{env} and the object names are returned. NULL on failure.}
 #' }
 #' 
