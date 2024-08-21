@@ -1,10 +1,10 @@
 Package: RblDataLicense
 Type: Package
 Title: R Interface to 'Bloomberg Data License'
-Version: 0.2.5
+Version: 0.2.6
 Authors@R: person(given = "Emanuele", 
 				  family = "Guidotti", 
-				  email = "emanuele.guidotti@unine.ch", 
+				  email = "emanuele.guidotti@usi.ch", 
 				  role = c("aut", "cre"), 
 				  comment = c(ORCID = "0000-0002-8961-6623"))
 Description: R interface to access prices and market data with the 
@@ -22,4 +22,4 @@ BugReports: https://github.com/eguidotti/RblDataLicense/issues
 Depends: RCurl, xts, methods
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3

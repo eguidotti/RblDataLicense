@@ -24,7 +24,7 @@ RblConnect(
 
 \item{protocol}{The connection protocol}
 
-\item{verbose}{logical. Should R report extra information on progress?}
+\item{verbose}{logical. Should print extra information on failure?}
 }
 \value{
 logical. Is the connection succesful?
