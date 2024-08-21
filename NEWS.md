@@ -1,3 +1,7 @@
+# RblDataLicense 0.2.6
+
+- Tweak `RblConnect()` to print more info on failure
+
 # RblDataLicense 0.2.5
 
 - Site moved to https://rbldatalicense.eguidotti.com
